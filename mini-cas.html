@@ -59,14 +59,14 @@ et se fait dans le classeur de la partie, un onglet par mini-cas.</p>
   <p class="situation">La directrice n’a pas le temps de lire 40 lignes de chiffres. Faites ressortir l’essentiel en un coup d’œil.</p>
   <p class="onglet">Onglet : <strong>Catalogue</strong></p>
   <ol class="steps"><li>Barres de données sur la colonne Ventes 2025.</li><li>Stock &lt; 100 : fond rouge clair (Règles de mise en surbrillance).</li><li>Les 5 meilleures ventes en gras vert (Règles des valeurs plus/moins élevées).</li><li>Ouvrez « Gérer les règles » : vérifiez la plage de chaque règle.</li></ol>
-  <p class="bonus">Bonus : colorez toute la ligne des titres Jeunesse avec la formule =$E5=&quot;Jeunesse&quot;.</p>
+  <p class="bonus">Bonus : colorez toute la ligne des titres Jeunesse, pas seulement la cellule du genre.</p>
   <a class="see" href="partie-1.html#d43">Voir la diapositive →</a>
 </article>
 <article class="case" id="P6">
   <header><span class="code">P6</span><h3>Prix TTC et droits d’auteur</h3><span class="badge">6 min</span></header>
   <p class="situation">Pour les relevés de droits, il faut le CA HT de chaque titre, son prix TTC et la part revenant à l’auteur. Les taux sont en R5 et R6.</p>
   <p class="onglet">Onglet : <strong>Catalogue</strong></p>
-  <ol class="steps"><li>K5 « CA HT » = Prix HT × Ventes 2025, puis recopiez jusqu’en bas.</li><li>L5 « Prix TTC » = Prix HT × (1 + R5). Recopiez : que se passe-t-il ?</li><li>Corrigez avec F4 : $R$5 reste fixe pendant la recopie.</li><li>M5 « Droits d’auteur » = CA HT × taux de droits (R6, figé lui aussi).</li></ol>
+  <ol class="steps"><li>Colonne K : calculez le chiffre d’affaires HT de chaque titre, puis recopiez jusqu’en bas.</li><li>Colonne L : calculez le prix TTC avec le taux de TVA de la cellule R5. Recopiez : que se passe-t-il ?</li><li>Corrigez votre formule pour que le taux reste fixe pendant la recopie.</li><li>Colonne M : calculez les droits d’auteur avec le taux de la cellule R6.</li></ol>
   <p class="bonus">Bonus : rappel métier — en France, c’est l’éditeur qui fixe le prix public du livre (loi Lang, 1981).</p>
   <a class="see" href="partie-1.html#d48">Voir la diapositive →</a>
 </article>
@@ -74,7 +74,7 @@ et se fait dans le classeur de la partie, un onglet par mini-cas.</p>
   <header><span class="code">P7</span><h3>Faut-il réimprimer ?</h3><span class="badge">5 min</span></header>
   <p class="situation">Le service fabrication demande la liste des titres à réimprimer : stock faible ET ventes fortes. Les seuils sont en R7 et R8.</p>
   <p class="onglet">Onglet : <strong>Catalogue</strong></p>
-  <ol class="steps"><li>N5 « Réimprimer ? » : =SI(ET(H5&lt;$R$7;I5&gt;$R$8);&quot;Oui&quot;;&quot;Non&quot;).</li><li>Recopiez, puis filtrez sur « Oui » : combien de titres ?</li><li>O5 « Statut » : « Best-seller » si ventes ≥ 5 000, « Bonne vente » si ≥ 1 000, sinon « Fonds ».</li><li>Modifiez le seuil R7 : la colonne N se met à jour toute seule.</li></ol>
+  <ol class="steps"><li>Colonne N : affichez « Oui » si le stock est sous le seuil (R7) et les ventes au-dessus du seuil (R8), sinon « Non ».</li><li>Recopiez, puis filtrez sur « Oui » : combien de titres ?</li><li>O5 « Statut » : « Best-seller » si ventes ≥ 5 000, « Bonne vente » si ≥ 1 000, sinon « Fonds ».</li><li>Modifiez le seuil R7 : la colonne N se met à jour toute seule.</li></ol>
   
   <a class="see" href="partie-1.html#d51">Voir la diapositive →</a>
 </article>
@@ -82,7 +82,7 @@ et se fait dans le classeur de la partie, un onglet par mini-cas.</p>
   <header><span class="code">P8</span><h3>La synthèse chiffrée</h3><span class="badge">4 min</span></header>
   <p class="situation">Sous le catalogue, un petit bloc de synthèse attend vos formules : 8 chiffres clés pour la réunion de lundi.</p>
   <p class="onglet">Onglet : <strong>Catalogue (bas de page)</strong></p>
-  <ol class="steps"><li>Total des ventes, prix HT moyen, nombre de titres : SOMME, MOYENNE, NB.</li><li>Meilleure vente et plus petit stock : MAX et MIN.</li><li>Nombre de policiers : NB.SI ; ventes de la Jeunesse : SOMME.SI.</li><li>Titres à réimprimer : NB.SI sur la colonne N.</li></ol>
+  <ol class="steps"><li>Calculez le total des ventes, le prix HT moyen et le nombre de titres.</li><li>Trouvez la meilleure vente et le plus petit stock.</li><li>Comptez les policiers, puis additionnez les ventes de la Jeunesse.</li><li>Combien de titres sont à réimprimer (colonne N) ?</li></ol>
   
   <a class="see" href="partie-1.html#d56">Voir la diapositive →</a>
 </article>
@@ -90,7 +90,7 @@ et se fait dans le classeur de la partie, un onglet par mini-cas.</p>
   <header><span class="code">P9</span><h3>La fiche-titre express</h3><span class="badge">6 min</span></header>
   <p class="situation">Au téléphone, une libraire demande le prix, l’auteur et le stock d’un titre. Construisez une fiche qui répond en 1 clic.</p>
   <p class="onglet">Onglet : <strong>P9_Recherche</strong></p>
-  <ol class="steps"><li>B7 : le prix HT avec RECHERCHEV (colonne n° 6, FAUX).</li><li>B8 : l’auteur avec INDEX + EQUIV.</li><li>B9 : le stock avec RECHERCHEX (si votre Excel la propose).</li><li>Changez le titre en B4 : tout se met à jour. Défi : l’ID en B10 avec RECHERCHEV ?</li></ol>
+  <ol class="steps"><li>B7 : affichez le prix HT du titre choisi en B4.</li><li>B8 : affichez son auteur·rice, avec une autre méthode qu’en B7.</li><li>B9 : affichez son stock, avec une troisième méthode si votre Excel le permet.</li><li>Changez le titre en B4 : tout se met à jour. Défi : affichez aussi son ID en B10.</li></ol>
   
   <a class="see" href="partie-1.html#d65">Voir la diapositive →</a>
 </article></div></section>
@@ -101,7 +101,7 @@ et se fait dans le classeur de la partie, un onglet par mini-cas.</p>
   <header><span class="code">Q1</span><h3>Un tableau intelligent</h3><span class="badge">5 min</span></header>
   <p class="situation">L’export des ventes est une simple plage de cellules. Transformez-le en tableau pour qu’il travaille pour vous.</p>
   <p class="onglet">Onglet : <strong>Ventes</strong></p>
-  <ol class="steps"><li>Cliquez dans les données, Ctrl+T, puis nommez le tableau T_Ventes (onglet Création de tableau).</li><li>K1 : tapez « CA HT », puis K2 : =[@Exemplaires]*[@[Prix HT (€)]]. La colonne se remplit seule !</li><li>Cochez « Ligne des totaux » : total des exemplaires et du CA.</li><li>Insérez un segment « Canal » et cliquez sur « Vente en ligne ».</li></ol>
+  <ol class="steps"><li>Cliquez dans les données, Ctrl+T, puis nommez le tableau T_Ventes (onglet Création de tableau).</li><li>Ajoutez une colonne « CA HT » (exemplaires × prix) : observez comment elle se remplit seule !</li><li>Cochez « Ligne des totaux » : total des exemplaires et du CA.</li><li>Insérez un segment « Canal » et cliquez sur « Vente en ligne ».</li></ol>
   
   <a class="see" href="partie-2.html#d9">Voir la diapositive →</a>
 </article>
@@ -110,7 +110,7 @@ et se fait dans le classeur de la partie, un onglet par mini-cas.</p>
   <p class="situation">La directrice veut savoir quel genre fait vivre la maison, et si la librairie indépendante a les mêmes goûts que le reste du marché.</p>
   <p class="onglet">Onglet : <strong>Ventes (+ nouvelle feuille)</strong></p>
   <ol class="steps"><li>Insertion › Tableau croisé dynamique à partir de T_Ventes (nouvelle feuille).</li><li>Genre en Lignes, Année en Colonnes, CA HT en Valeurs (Somme).</li><li>Paramètres des champs de valeurs › Afficher les valeurs › % du total de la colonne.</li><li>Ajoutez un segment Canal : quel genre domine en librairie indépendante ?</li></ol>
-  <p class="bonus">Bonus : ajoutez un champ calculé « Prix moyen » = CA HT / Exemplaires.</p>
+  <p class="bonus">Bonus : ajoutez un champ calculé donnant le prix moyen de chaque genre.</p>
   <a class="see" href="partie-2.html#d16">Voir la diapositive →</a>
 </article>
 <article class="case" id="Q3">
